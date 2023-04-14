@@ -2,7 +2,7 @@
 #
 # Authors: Tom Kralidis <tomkralidis@gmail.com>
 #
-# Copyright (c) 2023 Tom Kralidis
+# Copyright (c) 2022 Tom Kralidis
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation
@@ -58,10 +58,12 @@ PLUGINS = {
         'TinyDBCatalogue': 'pygeoapi.provider.tinydb_.TinyDBCatalogueProvider',
         'WMSFacade': 'pygeoapi.provider.wms_facade.WMSFacadeProvider',
         'xarray': 'pygeoapi.provider.xarray_.XarrayProvider',
-        'xarray-edr': 'pygeoapi.provider.xarray_edr.XarrayEDRProvider'
+        'xarray-edr': 'pygeoapi.provider.xarray_edr.XarrayEDRProvider',
+        'PostGIS': 'pygeoapi.provider.postgresql_nonspatial.PostgreSQLNSProvider'  # noqa
     },
     'formatter': {
-        'CSV': 'pygeoapi.formatter.csv_.CSVFormatter'
+        'CSV': 'pygeoapi.formatter.csv_.CSVFormatter',
+        'CSVTable': 'pygeoapi.formatter.csvTable.CSVFormatter'
     },
     'process': {
         'HelloWorld': 'pygeoapi.process.hello_world.HelloWorldProcessor'

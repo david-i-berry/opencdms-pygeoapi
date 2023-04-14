@@ -354,6 +354,50 @@ def get_processes(process_id=None):
     return get_response(api_.describe_processes(request, process_id))
 
 
+@BLUEPRINT.route('/vocabularies')
+@BLUEPRINT.route('/vocabularies/<path:vocab_id>')
+def get_vocab(vocab_id=None):
+    """
+    OGC API - Processes description endpoint
+
+    :param process_id: process identifier
+
+    :returns: HTTP response
+    """
+    if vocab_id is None:
+        return get_response(api_.describe_vocabularies(request, vocab_id))
+    else:
+        if request.method == 'GET':  # list items
+            return get_response(
+                api_.get_vocabulary_items(request, vocab_id))
+
+
+
+@BLUEPRINT.route('/vocabularies/<path:vocab_id>/items',
+                 methods=['GET', 'POST', 'OPTIONS'],
+                 provide_automatic_options=False)
+@BLUEPRINT.route('/vocabularies/<path:vocab_id>/items/<path:item_id>',
+                 methods=['GET'],
+                 provide_automatic_options=False)
+def vocab_items(vocab_id, item_id=None):
+    """
+    OGC API collections items endpoint
+
+    :param collection_id: collection identifier
+    :param item_id: item identifier
+
+    :returns: HTTP response
+    """
+
+    if item_id is None:
+        if request.method == 'GET':  # list items
+            return get_response(
+                api_.get_vocabulary_items(request, vocab_id))
+    else:
+        return get_response(
+            api_.get_vocabulary_item(request, vocab_id, item_id))
+
+
 @BLUEPRINT.route('/jobs')
 @BLUEPRINT.route('/jobs/<job_id>',
                  methods=['GET', 'DELETE'])
