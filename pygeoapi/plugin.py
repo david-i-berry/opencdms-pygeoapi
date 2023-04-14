@@ -59,7 +59,7 @@ PLUGINS = {
         'WMSFacade': 'pygeoapi.provider.wms_facade.WMSFacadeProvider',
         'xarray': 'pygeoapi.provider.xarray_.XarrayProvider',
         'xarray-edr': 'pygeoapi.provider.xarray_edr.XarrayEDRProvider',
-        'PostGIS': 'pygeoapi.provider.postgresql_nonspatial.PostgreSQLNSProvider'  # noqa
+        'PostgreSQL-nonspatial': 'pygeoapi.provider.postgresql_nonspatial.PostgreSQLNSProvider'  # noqa
     },
     'formatter': {
         'CSV': 'pygeoapi.formatter.csv_.CSVFormatter',
