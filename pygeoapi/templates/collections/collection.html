@@ -30,12 +30,12 @@
           <div id="collection-map"></div>
         </div>
       </div>
-      {% set license_header_printed = 0 %}
+      {% set header = [] %}
       {% for link in data['links'] %}
           {% if link['rel'] == 'license' %}
-          {% if license_header_printed == 0 %}
+          {% if not header.printed %}
           <h3>{% trans %}License{% endtrans %}</h3>
-          {% set license_header_printed = 1 %}
+          {% header['printed'] = 1 %}
           {% endif %}
           <ul>
             <li>
