@@ -30,21 +30,27 @@
           <div id="collection-map"></div>
         </div>
       </div>
-      {% set license_header = false %}
+
+      {% set license_links_found = 0 %}
+      {% for link in data['links'] %}
+      {% if link['rel'] == 'license' %}
+      {% set license_links_found = 1 %}
+      {% endif %}
+
+      {% if license_links_found == 1 %}
+      <h3>{% trans %}License{% endtrans %}</h3>
+      <ul>
       {% for link in data['links'] %}
           {% if link['rel'] == 'license' %}
-          {% if not license_header %}
-          <h3>{% trans %}License{% endtrans %}</h3>
-          {% set license_header = true %}
-          {% endif %}
-          <ul>
             <li>
               <div>
                 <a title="{{ link['title'] }}" href="{{ link['href'] }}">{{ link['title'] or link['href'] }}<a>
             </li>
-          </ul>
           {% endif %}
+      </ul>
       {% endfor %}
+      {% endif %}
+
       {% if data['itemType'] == 'feature' or data['itemType'] == 'record' %}
       <h3>{% trans %}Browse{% endtrans %}</h3>
       <ul>
