@@ -30,9 +30,13 @@
           <div id="collection-map"></div>
         </div>
       </div>
+      {% set license_header = false %}
       {% for link in data['links'] %}
           {% if link['rel'] == 'license' %}
+          {% if not license_header %}
           <h3>{% trans %}License{% endtrans %}</h3>
+          {% set license_header = true %}
+          {% endif }
           <ul>
             <li>
               <div>
