@@ -30,12 +30,12 @@
           <div id="collection-map"></div>
         </div>
       </div>
-      {% set header = [] %}
+      {% set ns = namespace(header_printed=false) %}
       {% for link in data['links'] %}
           {% if link['rel'] == 'license' %}
-          {% if not header.printed %}
+          {% if not ns.header_printed %}
           <h3>{% trans %}License{% endtrans %}</h3>
-          {% header['printed'] = 1 %}
+          {% set ns.header_printed = true %}
           {% endif %}
           <ul>
             <li>
