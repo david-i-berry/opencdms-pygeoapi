@@ -30,6 +30,17 @@
           <div id="collection-map"></div>
         </div>
       </div>
+      {% for link in data['links'] %}
+          {% if link['rel'] == 'license' %}
+          <h3>{% trans %}License{% endtrans %}</h3>
+          <ul>
+            <li>
+              <div>
+                <a title="{{ link['title'] }}" href="{{ link['href'] }}">{{ link['title'] or link['href'] }}<a>
+            </li>
+          </ul>
+          {% endif %}
+      {% endfor %}
       {% if data['itemType'] == 'feature' or data['itemType'] == 'record' %}
       <h3>{% trans %}Browse{% endtrans %}</h3>
       <ul>
