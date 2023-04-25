@@ -36,6 +36,7 @@
       {% if link['rel'] == 'license' %}
       {% set license_links_found = 1 %}
       {% endif %}
+      {% endfor %}
 
       {% if license_links_found == 1 %}
       <h3>{% trans %}License{% endtrans %}</h3>
