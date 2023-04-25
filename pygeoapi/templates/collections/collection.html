@@ -35,7 +35,7 @@
           {% if link['rel'] == 'license' %}
           {% if license_header_printed == 0 %}
           <h3>{% trans %}License{% endtrans %}</h3>
-          {% set license_header = 1 %}
+          {% set license_header_printed = 1 %}
           {% endif %}
           <ul>
             <li>
