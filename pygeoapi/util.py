@@ -412,8 +412,7 @@ def render_j2_template(config: dict, template: Path,
         LOGGER.debug(f'using default templates: {TEMPLATES}')
 
     env = Environment(loader=FileSystemLoader(template_paths),
-                      extensions=['jinja2.ext.i18n',
-                                  'jinja2.ext.autoescape'],
+                      extensions=['jinja2.ext.i18n'],
                       autoescape=select_autoescape(['html', 'xml']))
 
     env.filters['to_json'] = to_json
