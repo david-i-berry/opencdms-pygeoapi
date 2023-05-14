@@ -272,6 +272,7 @@ class PostgreSQLProvider(BaseProvider):
             session.execute(statement)
             session.commit()
 
+        LOGGER.debug( f"feature {feature['id']} added")
         return feature['id']
 
     def update(self, identifier, item):
@@ -465,7 +466,13 @@ class PostgreSQLProvider(BaseProvider):
         result[self.geom] = f"SRID=4326;{geom}"
         for column in self.table_model.__table__.columns:
             if column.name not in (self.id_field, self.geom):
-                result[column.name] = feature['properties'][column.name]
+                if feature['properties'][column.name] not in (None, ''):
+                    result[column.name] = feature['properties'][column.name]
+                else:
+                    result[column.name] = None
+
+        LOGGER.debug(result)
+
         return result
 
     def _get_order_by_clauses(self, sort_by, table_model):
