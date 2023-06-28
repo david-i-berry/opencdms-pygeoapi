@@ -1,7 +1,7 @@
 Babel
-click>7,<=8
+click
 Flask
-jinja2==3.0.3
+jinja2
 jsonschema
 pydantic
 pygeofilter
@@ -12,7 +12,7 @@ pytz
 PyYAML
 rasterio
 requests
-shapely<2.0
+shapely
 SQLAlchemy<2.0.0
 tinydb
 unicodecsv

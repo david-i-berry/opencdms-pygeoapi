@@ -121,3 +121,8 @@ examples/django/sample_project/db.sqlite3
 
 # Pre-commit hooks config file
 .pre-commit-config.yaml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
+
+# Pcycharm IDE
+.idea/
